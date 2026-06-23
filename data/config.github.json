@@ -4,6 +4,7 @@
     "provider": "deepseek",
     "model": "deepseek-v4-flash",
     "api_key_env": "DEEPSEEK_API_KEY",
+    "languages": ["zh"],
     "temperature": 0.3,
     "max_tokens": 4096,
     "throttle_sec": 0,
