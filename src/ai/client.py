@@ -77,6 +77,15 @@ def _looks_like_api_key_value(value: str) -> bool:
     return not bool(_ENV_VAR_RE.fullmatch(value))
 
 
+def _normalize_ollama_base_url(base_url: str) -> str:
+    normalized = base_url.strip().rstrip("/")
+    if "://" not in normalized:
+        normalized = f"http://{normalized}"
+    if normalized.endswith("/v1"):
+        return normalized
+    return f"{normalized}/v1"
+
+
 class AIClient(ABC):
     """Abstract base class for AI clients."""
 
@@ -174,6 +183,14 @@ class OpenAIClient(AIClient):
         "ollama": "http://localhost:11434/v1",
     }
 
+    _BASE_URL_ENVS = {
+        "ollama": (
+            "HORIZON_OLLAMA_BASE_URL",
+            "OLLAMA_BASE_URL",
+            "OLLAMA_HOST",
+        ),
+    }
+
     # Providers that don't support response_format
     _NO_RESPONSE_FORMAT = {"minimax"}
 
@@ -192,7 +209,7 @@ class OpenAIClient(AIClient):
         api_key = _resolve_api_key(config, fallback=fallback)
 
         kwargs = {"api_key": api_key}
-        base_url = config.base_url or self._DEFAULT_BASE_URLS.get(config.provider.value)
+        base_url = self._resolve_base_url(config)
         if base_url:
             kwargs["base_url"] = base_url
 
@@ -204,6 +221,21 @@ class OpenAIClient(AIClient):
         # Some newer models (e.g. Claude Opus 4.7 on Bedrock Converse) reject
         # `temperature`. We learn this on first 400 and stop sending it.
         self._supports_temperature = True
+
+    @classmethod
+    def _resolve_base_url(cls, config: AIConfig) -> Optional[str]:
+        base_url = (config.base_url or "").strip()
+        if not base_url:
+            for env_name in cls._BASE_URL_ENVS.get(config.provider.value, ()):
+                base_url = os.getenv(env_name, "").strip()
+                if base_url:
+                    break
+        if not base_url:
+            base_url = cls._DEFAULT_BASE_URLS.get(config.provider.value, "")
+
+        if config.provider == AIProvider.OLLAMA and base_url:
+            return _normalize_ollama_base_url(base_url)
+        return base_url or None
 
     async def complete(
         self,
