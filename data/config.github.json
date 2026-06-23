@@ -25,39 +25,190 @@
   "sources": {
     "github": [
       {
-        "type": "user_events",
-        "username": "torvalds",
+        "type": "repo_releases",
+        "owner": "dotnet",
+        "repo": "runtime",
         "enabled": true
       },
       {
         "type": "repo_releases",
-        "owner": "astral-sh",
-        "repo": "uv",
+        "owner": "dotnet",
+        "repo": "aspnetcore",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "dotnet",
+        "repo": "maui",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "dotnet",
+        "repo": "efcore",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "dotnet",
+        "repo": "roslyn",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "AvaloniaUI",
+        "repo": "Avalonia",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "grpc",
+        "repo": "grpc-dotnet",
+        "enabled": true
+      },
+      {
+        "type": "repo_releases",
+        "owner": "microsoft",
+        "repo": "semantic-kernel",
         "enabled": true
       }
     ],
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 20,
-      "min_score": 100
+      "fetch_top_stories": 30,
+      "min_score": 80
     },
     "rss": [
+      {
+        "name": ".NET Blog",
+        "url": "https://devblogs.microsoft.com/dotnet/author/dotnet/feed/",
+        "enabled": true,
+        "category": "dotnet"
+      },
+      {
+        "name": "Visual Studio Blog",
+        "url": "https://devblogs.microsoft.com/visualstudio/feed/",
+        "enabled": false,
+        "category": "tooling"
+      },
+      {
+        "name": "Microsoft for Developers",
+        "url": "https://devblogs.microsoft.com/feed",
+        "enabled": true,
+        "category": "tooling-ai"
+      },
+      {
+        "name": "Visual Studio Code",
+        "url": "https://code.visualstudio.com/feed.xml",
+        "enabled": true,
+        "category": "tooling-ai"
+      },
+      {
+        "name": "GitHub Copilot (Microsoft Dev Blog)",
+        "url": "https://developer.microsoft.com/blog/category/github-copilot/feed",
+        "enabled": true,
+        "category": "tooling-ai"
+      },
+      {
+        "name": "JetBrains .NET Tools (Rider/ReSharper)",
+        "url": "https://blog.jetbrains.com/dotnet/feed/",
+        "enabled": true,
+        "category": "dotnet"
+      },
+      {
+        "name": "JetBrains DataGrip",
+        "url": "https://blog.jetbrains.com/datagrip/feed/",
+        "enabled": true,
+        "category": "database"
+      },
+      {
+        "name": "JetBrains WebStorm",
+        "url": "https://blog.jetbrains.com/webstorm/feed/",
+        "enabled": true,
+        "category": "frontend"
+      },
+      {
+        "name": "JetBrains Tools",
+        "url": "https://blog.jetbrains.com/category/tools/feed/",
+        "enabled": true,
+        "category": "tooling"
+      },
+      {
+        "name": "Planet PostgreSQL",
+        "url": "https://planet.postgresql.org/rss20.xml",
+        "enabled": true,
+        "category": "database"
+      },
+      {
+        "name": "web.dev",
+        "url": "https://web.dev/feed.xml",
+        "enabled": true,
+        "category": "frontend"
+      },
+      {
+        "name": "Martin Fowler",
+        "url": "https://martinfowler.com/feed.atom",
+        "enabled": true,
+        "category": "architecture"
+      },
       {
         "name": "Simon Willison",
         "url": "https://simonwillison.net/atom/everything/",
         "enabled": true,
-        "category": "ai-tools"
-      },
-      {
-        "name": "LWN.net (subscriber full-text)",
-        "url": "https://lwn.net/headlines/full_text?key=${LWN_KEY}",
-        "enabled": false,
-        "category": "linux"
+        "category": "ai-ide"
       }
     ],
     "reddit": {
       "enabled": true,
       "subreddits": [
+        {
+          "subreddit": "dotnet",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 10
+        },
+        {
+          "subreddit": "csharp",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 10
+        },
+        {
+          "subreddit": "SQL",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 10
+        },
+        {
+          "subreddit": "PostgreSQL",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 10
+        },
+        {
+          "subreddit": "Database",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 10
+        },
+        {
+          "subreddit": "LocalLLaMA",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 20
+        },
         {
           "subreddit": "MachineLearning",
           "enabled": true,
@@ -65,14 +216,38 @@
           "time_filter": "day",
           "fetch_limit": 15,
           "min_score": 50
-        }
-      ],
-      "users": [
+        },
         {
-          "username": "iamthatis",
+          "subreddit": "systemdesign",
           "enabled": true,
-          "sort": "new",
-          "fetch_limit": 10
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 20
+        },
+        {
+          "subreddit": "webdev",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 20
+        },
+        {
+          "subreddit": "PLC",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 5
+        },
+        {
+          "subreddit": "automation",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 15,
+          "min_score": 5
         }
       ],
       "fetch_comments": 5
@@ -102,21 +277,75 @@
       ]
     },
     "ossinsight": {
-      "enabled": false,
+      "enabled": true,
       "period": "past_24_hours",
-      "languages": ["All", "Python", "TypeScript"],
-      "keywords": [],
-      "min_stars": 10,
-      "max_items": 30
+      "languages": ["C#", "TypeScript", "Python", "Rust"],
+      "keywords": [
+        "dotnet",
+        "csharp",
+        "aspnet",
+        "aspnetcore",
+        "blazor",
+        "maui",
+        "efcore",
+        "avalonia",
+        "wpf",
+        "winforms",
+        "grpc",
+        "postgres",
+        "redis",
+        "kafka",
+        "sql",
+        "nosql",
+        "llm",
+        "agent",
+        "copilot",
+        "semantic-kernel",
+        "rag",
+        "vector",
+        "opcua",
+        "modbus",
+        "scada",
+        "plc",
+        "hmi"
+      ],
+      "min_stars": 15,
+      "max_items": 40
     }
   },
   "filtering": {
-    "ai_score_threshold": 6.0,
+    "ai_score_threshold": 6.5,
     "time_window_hours": 24,
-    "max_items": null,
-    "category_groups": {},
+    "max_items": 25,
+    "category_groups": {
+      "dotnet": {
+        "name": ".NET / C#",
+        "limit": 7,
+        "categories": ["dotnet"]
+      },
+      "database": {
+        "name": "数据库",
+        "limit": 6,
+        "categories": ["database"]
+      },
+      "ai": {
+        "name": "AI / IDE / 工具链",
+        "limit": 6,
+        "categories": ["tooling", "tooling-ai", "ai-ide"]
+      },
+      "frontend": {
+        "name": "前端",
+        "limit": 3,
+        "categories": ["frontend"]
+      },
+      "architecture": {
+        "name": "架构",
+        "limit": 3,
+        "categories": ["architecture"]
+      }
+    },
     "default_group": "other",
-    "default_group_limit": null
+    "default_group_limit": 5
   },
   "webhook": {
     "enabled": false,
