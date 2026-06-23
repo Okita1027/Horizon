@@ -1,0 +1,12 @@
+[build]
+  base = "docs/"
+  command = "bundle exec jekyll build --config _config.yml,_config_netlify.yml"
+  publish = "_site"
+
+[build.environment]
+  JEKYLL_ENV = "production"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
